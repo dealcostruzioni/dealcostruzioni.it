@@ -1,0 +1,73 @@
+---
+import BaseHead from '@components/BaseHead.astro';
+import ScrollToTop from '@components/ScrollToTop.astro';
+import SideMenu from '@components/SideMenu.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import VendorScripts from '@components/VendorScripts.astro';
+import Analytics from '@components/Analytics.astro';
+import CookieConsent from '@components/CookieConsent.astro';
+
+import '@/styles/global.css';
+import '@/assets/css/style.css';
+import '@/assets/css/custom-footer.css';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  noindex?: boolean;
+  canonicalUrl?: string;
+  includeHoverEffect?: boolean;
+  includeOdometer?: boolean;
+}
+
+const {
+  title,
+  description,
+  ogImage,
+  noindex = false,
+  canonicalUrl,
+  includeHoverEffect = false,
+  includeOdometer = false,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <BaseHead
+    title={title}
+    description={description}
+    ogImage={ogImage}
+    noindex={noindex}
+    canonicalUrl={canonicalUrl}
+  />
+  <Analytics />
+</head>
+
+<body>
+  <ScrollToTop />
+  <SideMenu />
+
+  <div class="has-smooth" id="has_smooth"></div>
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+      <Header />
+
+      <main>
+        <slot />
+      </main>
+
+      <Footer />
+    </div>
+  </div>
+
+  <VendorScripts
+    includeHoverEffect={includeHoverEffect}
+    includeOdometer={includeOdometer}
+  />
+
+  <CookieConsent />
+</body>
+</html>

@@ -1,0 +1,80 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ContactForm from '@components/ContactForm.astro';
+---
+
+<BaseLayout
+  title="Contatti | DEAL Costruzioni Srl"
+  description="Contatta DEAL Costruzioni Srl per un preventivo gratuito. Impresa edile a Trieste: costruzioni, ristrutturazioni e lavori edili in Friuli Venezia Giulia."
+>
+
+  <!-- page title area start -->
+  <section class="page-title-area">
+    <div class="container rr-container-1650">
+      <div class="page-title-area-inner">
+        <div class="page-title-wrapper">
+          <h2 class="page-sub-title">Contattaci</h2>
+          <h3 class="page-title"> Scrivici e iniziamo <br />
+            il tuo progetto <br /> insieme.</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- page title area end -->
+
+  <!-- contatti area start -->
+  <div class="contact-area-contact-page section-spacing-bottom">
+    <div class="container rr-container-1650">
+      <div class="contact-area-contact-page-inner">
+        <div class="section-content-wrapper fade-anim">
+          <div class="section-content">
+            <div class="contact-mail">
+              <p class="text">Raccontaci il tuo progetto. Valuteremo insieme la soluzione tecnica più adatta alle tue esigenze.
+              </p>
+            </div>
+            <div class="contact-social">
+              <p class="title">Contatti</p>
+              <div class="social-links">
+                <a href="mailto:info@dealcostruzioni.it">info@dealcostruzioni.it</a>
+                <a href="tel:+390402650468">(+39) 040 265 0468</a>
+              </div>
+            </div>
+            <div class="contact-social">
+              <p class="title">Seguici</p>
+              <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Instagram</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-wrap">
+            <ContactForm />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- contatti area end -->
+
+  <!-- contatti info area start -->
+  <section class="contact-info section-spacing-bottom">
+    <div class="container rr-container-1650">
+      <div class="contact-info__inner">
+        <div class="contact-info__item">
+          <h2 class="sottotitolo">La nostra sede:</h2>
+        </div>
+        <div class="contact-info__sedi">
+          <div class="contact-info__item">
+            <p class="title">Sede</p>
+            <h3>Via Norma Cossetto, 4<br />
+              34145 Trieste (TS)<br />
+              Italia</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- contatti info area end -->
+
+</BaseLayout>

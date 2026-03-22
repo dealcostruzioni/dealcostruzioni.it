@@ -1,0 +1,23 @@
+.custom-footer-theme {
+  background-color: #3E5A5D !important;
+}
+
+.custom-footer-theme * {
+  color: #EEF5E1 !important;
+}
+
+.custom-footer-theme .footer-10-wrapper,
+.custom-footer-theme .footer-widget-box:not(:last-child),
+.custom-footer-theme .subscribe-form .input-group:last-of-type {
+  border-color: #EEF5E1 !important;
+}
+
+.custom-footer-theme input::placeholder {
+  color: rgba(238, 245, 225, 0.7) !important;
+}
+
+.custom-footer-theme .footer-nav-list li a:hover,
+.custom-footer-theme .footer-location a:hover,
+.custom-footer-theme .copyright-text .text a:hover {
+  color: rgba(238, 245, 225, 0.8) !important;
+}

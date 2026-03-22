@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+/*
+ * DEAL Costruzioni — Global Styles
+ * Tailwind CSS v4 + Legacy CSS integration
+ *
+ * Strategy: The existing style.css (10,700+ lines) is imported to maintain
+ * 100% visual fidelity. Tailwind utilities are layered on top for new
+ * components (contact form validation, honeypot, etc.) and future work.
+ */
+
+/* ─── Custom Font Faces ─── */
+@font-face {
+  font-family: 'BDO Grotesk';
+  src: url('/fonts/BDOGrotesk-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Granola';
+  src: url('/fonts/Granola.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tartuffo Trial';
+  src: url('/fonts/Tartuffo_Trial-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tartuffo Trial';
+  src: url('/fonts/Tartuffo_Trial-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tartuffo Trial';
+  src: url('/fonts/Tartuffo_Trial-RegularItalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Suisse Int';
+  src: url('/fonts/fonnts.com-Suisse_Intl_Book.ttf') format('truetype');
+  font-weight: 450;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Tailwind Theme ─── */
+@theme {
+  --color-primary: #111111;
+  --color-secondary: #555555;
+  --color-brand: #3E5A5D;
+  --color-accent: #D4A853;
+  --color-border: rgba(17, 17, 17, 0.10);
+  --color-bg: #111111;
+  --color-white: #FFFFFF;
+
+  --font-bai: 'Bai Jamjuree', sans-serif;
+  --font-tartuffo: 'Tartuffo Trial', serif;
+  --font-granola: 'Granola', serif;
+  --font-bdo: 'BDO Grotesk', sans-serif;
+  --font-suisse: 'Suisse Int', sans-serif;
+
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1920px;
+}
+
+/* ─── Honeypot field (anti-spam) ─── */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  z-index: -1;
+}
+
+/* ─── Form validation states (Tailwind-styled) ─── */
+.form-field-error {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 1px #ef4444;
+}
+
+.form-field-success {
+  border-color: #22c55e !important;
+}
+
+.form-error-message {
+  color: #ef4444;
+  font-size: 13px;
+  margin-top: 4px;
+  display: none;
+}
+
+.form-error-message.visible {
+  display: block;
+}
+
+.form-success-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #22c55e;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 15px;
+  z-index: 9999;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.form-success-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}

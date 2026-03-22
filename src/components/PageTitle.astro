@@ -1,0 +1,20 @@
+---
+interface Props {
+  subtitle?: string;
+  title: string;
+  titleHighlight?: string;
+}
+
+const { subtitle, title, titleHighlight } = Astro.props;
+---
+
+<section class="page-title-area">
+  <div class="container rr-container-1650">
+    <div class="page-title-area-inner">
+      <div class="page-title-wrapper">
+        {subtitle && <h2 class="page-sub-title">{subtitle}</h2>}
+        <h2 class="page-title" set:html={titleHighlight ? `${title} <span>${titleHighlight}</span>` : title} />
+      </div>
+    </div>
+  </div>
+</section>

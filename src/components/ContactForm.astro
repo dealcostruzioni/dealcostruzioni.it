@@ -1,0 +1,132 @@
+---
+// Reusable contact form with honeypot + validation
+interface Props {
+  formId?: string;
+}
+
+const { formId = 'contact__form' } = Astro.props;
+---
+
+<form id={formId} method="POST" action="/api/contact" novalidate>
+  <div class="contact-formwrap">
+    <!-- Honeypot field — hidden from humans -->
+    <div class="hp-field" aria-hidden="true">
+      <label for="hp_website">Non compilare questo campo</label>
+      <input type="text" name="website" id="hp_website" tabindex="-1" autocomplete="off" />
+    </div>
+    <div class="contact-formfield">
+      <input type="text" name="name" id="name" placeholder="Nome*" required aria-label="Nome" />
+      <span class="form-error-message" data-error="name">Inserisci il tuo nome</span>
+    </div>
+    <div class="contact-formfield">
+      <input type="email" name="email" id="email" placeholder="Email*" required aria-label="Email" />
+      <span class="form-error-message" data-error="email">Inserisci un indirizzo email valido</span>
+    </div>
+    <div class="contact-formfield">
+      <input type="tel" name="phone" id="phone" placeholder="Telefono" aria-label="Telefono" />
+    </div>
+    <div class="contact-formfield">
+      <input type="text" name="azienda" id="azienda" placeholder="Azienda" aria-label="Azienda" />
+    </div>
+    <div class="contact-formfield message">
+      <input type="text" name="oggetto" id="oggetto" placeholder="Oggetto*" required aria-label="Oggetto" />
+      <span class="form-error-message" data-error="oggetto">Inserisci l'oggetto del messaggio</span>
+    </div>
+    <div class="contact-formfield message">
+      <textarea name="message" id="message" rows="7" placeholder="Messaggio*" required aria-label="Messaggio"></textarea>
+      <span class="form-error-message" data-error="message">Inserisci il messaggio</span>
+    </div>
+  </div>
+  <div class="submit-btn">
+    <button type="submit" class="rr-btn-primary" id="submit-btn">
+      <span class="text">Invia </span>
+      <i class="fa-solid fa-arrow-right-long"></i>
+    </button>
+  </div>
+  <div id="response-message"></div>
+</form>
+
+<div class="form-success-toast" id="success-toast">
+  <i class="fa-solid fa-check-circle"></i> Messaggio inviato con successo!
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact__form') as HTMLFormElement;
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Client-side validation
+      let valid = true;
+      const required = form.querySelectorAll('[required]') as NodeListOf<HTMLInputElement | HTMLTextAreaElement>;
+      required.forEach((field) => {
+        const errEl = form.querySelector(`[data-error="${field.name}"]`) as HTMLElement;
+        if (!field.value.trim()) {
+          field.classList.add('form-field-error');
+          if (errEl) errEl.classList.add('visible');
+          valid = false;
+        } else {
+          field.classList.remove('form-field-error');
+          if (errEl) errEl.classList.remove('visible');
+        }
+      });
+
+      // Email format
+      const emailField = form.querySelector('[name="email"]') as HTMLInputElement;
+      if (emailField && emailField.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
+        emailField.classList.add('form-field-error');
+        const errEl = form.querySelector('[data-error="email"]') as HTMLElement;
+        if (errEl) errEl.classList.add('visible');
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      // Honeypot check
+      const hp = form.querySelector('[name="website"]') as HTMLInputElement;
+      if (hp && hp.value) return; // Bot detected
+
+      const btn = form.querySelector('#submit-btn') as HTMLButtonElement;
+      btn.disabled = true;
+      btn.querySelector('.text')!.textContent = 'Invio in corso...';
+
+      try {
+        const formData = new FormData(form);
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          body: formData,
+        });
+        const data = await res.json();
+
+        if (res.ok) {
+          form.reset();
+          const toast = document.getElementById('success-toast');
+          if (toast) {
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 4000);
+          }
+        } else {
+          const msg = document.getElementById('response-message');
+          if (msg) msg.innerHTML = `<p style="color: #ef4444; margin-top: 15px;">${data.message || 'Errore nell\'invio. Riprova.'}</p>`;
+        }
+      } catch {
+        const msg = document.getElementById('response-message');
+        if (msg) msg.innerHTML = '<p style="color: #ef4444; margin-top: 15px;">Errore di connessione. Riprova.</p>';
+      } finally {
+        btn.disabled = false;
+        btn.querySelector('.text')!.textContent = 'Invia ';
+      }
+    });
+
+    // Clear errors on input
+    form.querySelectorAll('input, textarea').forEach((field) => {
+      field.addEventListener('input', () => {
+        (field as HTMLElement).classList.remove('form-field-error');
+        const errEl = form.querySelector(`[data-error="${(field as HTMLInputElement).name}"]`) as HTMLElement;
+        if (errEl) errEl.classList.remove('visible');
+      });
+    });
+  });
+</script>

@@ -1,0 +1,15 @@
+---
+/**
+ * Google Analytics 4 — placeholder component
+ *
+ * GA4 is NOT loaded here. It is loaded dynamically by CookieConsent.astro
+ * only after the user gives explicit consent (GDPR compliance).
+ *
+ * The GA4 measurement ID is passed via data attribute and read by
+ * the cookie consent script.
+ */
+const GA_ID = import.meta.env.PUBLIC_GA4_ID || 'G-XXXXXXXXXX';
+---
+
+<!-- GA4 ID stored for CookieConsent to use when consent is given -->
+<meta name="ga4-id" content={GA_ID} />

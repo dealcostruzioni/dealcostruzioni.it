@@ -1,0 +1,58 @@
+---
+/**
+ * Vendor JS dependencies — loaded at bottom of page.
+ * Includes jQuery, Bootstrap, GSAP ecosystem, and custom scripts.
+ */
+interface Props {
+  includeHoverEffect?: boolean;
+  includeOdometer?: boolean;
+}
+
+const { includeHoverEffect = false, includeOdometer = false } = Astro.props;
+---
+
+<!-- Core dependencies -->
+<script is:inline src="/vendor/jquery/jquery.js"></script>
+<script is:inline src="/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+<script is:inline src="/vendor/popup/jquery.magnific-popup.min.js"></script>
+<script is:inline src="/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- GSAP ecosystem -->
+<script is:inline src="/vendor/gsap/gsap.min.js"></script>
+<script is:inline src="/vendor/gsap/ScrollSmoother.min.js"></script>
+<script is:inline src="/vendor/gsap/ScrollTrigger.min.js"></script>
+<script is:inline src="/vendor/gsap/SplitText.min.js"></script>
+<script is:inline src="/vendor/gsap/SplitType.js"></script>
+<script is:inline src="/vendor/gsap/customEase.js"></script>
+
+<!-- UI plugins -->
+<script is:inline src="/vendor/menu/jquery.meanmenu.min.js"></script>
+<script is:inline src="/vendor/backtop/backToTop.js"></script>
+<script is:inline src="/vendor/nice-select/nice-select.js"></script>
+
+<!-- Optional: Odometer counters -->
+{includeOdometer && (
+  <script is:inline src="/vendor/odometer/odometer.min.js"></script>
+)}
+{includeOdometer && (
+  <script is:inline src="/vendor/odometer/waypoints.min.js"></script>
+)}
+
+<!-- Isotope -->
+<script is:inline src="/vendor/isotope/imagesloaded.pkgd.min.js"></script>
+<script is:inline src="/vendor/isotope/isotope.pkgd.min.js"></script>
+
+<!-- Magnific Popup -->
+<script is:inline src="/vendor/magnific/magnific-popup.min.js"></script>
+
+<!-- Optional: WebGL hover effect -->
+{includeHoverEffect && (
+  <script is:inline src="/vendor/hover-effect/three.js"></script>
+)}
+{includeHoverEffect && (
+  <script is:inline src="/vendor/hover-effect/hover-effect.umd.js"></script>
+)}
+
+<!-- Custom scripts -->
+<script is:inline src="/vendor/common-js/common.js"></script>
+<script is:inline src="/vendor/main.js"></script>

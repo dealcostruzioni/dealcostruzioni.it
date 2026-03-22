@@ -1,0 +1,55 @@
+---
+interface Props {
+  basePath?: string;
+}
+
+const { basePath = '' } = Astro.props;
+const p = (path: string) => `${basePath}${path}`;
+---
+
+<header class="header-area-4">
+  <div class="header-main">
+    <div class="container rr-container-1890">
+      <div class="header-area-4__inner">
+        <div class="header__logo">
+          <a href={p('/index.html')}>
+            <img src="/images/logo/logo.jpg" class="normal-logo" alt="DEAL Costruzioni Srl - Impresa Edile Trieste" />
+          </a>
+        </div>
+        <div class="header__nav-2">
+          <nav class="main-menu">
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">Azienda</a></li>
+              <li><a href="/service">Servizi</a></li>
+              <li><a href="/case-studies">Case Studies</a></li>
+              <li><a href="/contact">Contatti</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="header-right">
+          <a href="/" class="rr-btn-primary">
+            <span class="text">IT </span>
+            <i class="fa-solid fa-angle-right right-icon"></i>
+          </a>
+          <div class="header__navicon">
+            <div class="side-toggle desktop-button d-none">
+              <a class="bar-icon inner" href="javascript:void(0)">
+                <span></span>
+                <span></span>
+                <span></span>
+              </a>
+            </div>
+            <div class="side-toggle mobile-button d-lg-block d-xl-none">
+              <a class="bar-icon" href="javascript:void(0)">
+                <span></span>
+                <span></span>
+                <span></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
