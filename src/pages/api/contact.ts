@@ -1,15 +1,14 @@
 /**
- * Contact Form API Route — Cloudflare Pages Function
+ * Contact Form API Route — Vercel Serverless Function
  *
  * Handles form submissions with:
  * - Honeypot spam detection
  * - Server-side validation
- * - Email sending via Cloudflare Email Workers or external SMTP
+ * - Email sending via Resend
  *
- * Environment variables needed (set in Cloudflare Pages dashboard):
- * - CONTACT_EMAIL: recipient email (e.g., info@dealcostruzioni.it)
- * - MAILGUN_API_KEY: (optional) Mailgun API key for email delivery
- * - MAILGUN_DOMAIN: (optional) Mailgun domain
+ * Environment variables (set in Vercel dashboard):
+ * - RESEND_API_KEY: Resend API key
+ * - CONTACT_EMAIL: recipient email
  */
 
 import type { APIRoute } from 'astro';
@@ -21,7 +20,6 @@ export const POST: APIRoute = async ({ request }) => {
     // Honeypot check — if filled, it's a bot
     const honeypot = formData.get('website');
     if (honeypot) {
-      // Silently reject but return 200 to not tip off bots
       return new Response(
         JSON.stringify({ success: true, message: 'Messaggio inviato con successo.' }),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
@@ -55,8 +53,46 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Build email body
-    const emailBody = `
+    // Build email body (HTML for better formatting in Outlook)
+    const emailHtml = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #3E5A5D; border-bottom: 2px solid #D4A853; padding-bottom: 10px;">
+          Nuovo messaggio dal sito web
+        </h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+          <tr>
+            <td style="padding: 8px 12px; font-weight: bold; color: #333; width: 120px; vertical-align: top;">Nome:</td>
+            <td style="padding: 8px 12px; color: #555;">${name}</td>
+          </tr>
+          <tr style="background: #f9f9f9;">
+            <td style="padding: 8px 12px; font-weight: bold; color: #333; vertical-align: top;">Email:</td>
+            <td style="padding: 8px 12px; color: #555;"><a href="mailto:${email}" style="color: #3E5A5D;">${email}</a></td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 12px; font-weight: bold; color: #333; vertical-align: top;">Telefono:</td>
+            <td style="padding: 8px 12px; color: #555;">${phone || 'Non specificato'}</td>
+          </tr>
+          <tr style="background: #f9f9f9;">
+            <td style="padding: 8px 12px; font-weight: bold; color: #333; vertical-align: top;">Azienda:</td>
+            <td style="padding: 8px 12px; color: #555;">${azienda || 'Non specificata'}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 12px; font-weight: bold; color: #333; vertical-align: top;">Oggetto:</td>
+            <td style="padding: 8px 12px; color: #555;">${oggetto}</td>
+          </tr>
+        </table>
+        <div style="margin-top: 20px; padding: 16px; background: #f5f5f5; border-left: 3px solid #3E5A5D;">
+          <p style="font-weight: bold; color: #333; margin: 0 0 8px 0;">Messaggio:</p>
+          <p style="color: #555; margin: 0; white-space: pre-wrap;">${message}</p>
+        </div>
+        <hr style="margin-top: 30px; border: none; border-top: 1px solid #ddd;" />
+        <p style="font-size: 12px; color: #999; margin-top: 10px;">
+          Inviato dal modulo di contatto di dealcostruzioni.it
+        </p>
+      </div>
+    `.trim();
+
+    const emailText = `
 Nuovo messaggio dal sito DEAL Costruzioni
 
 Nome: ${name}
@@ -72,36 +108,42 @@ ${message}
 Inviato dal modulo di contatto di dealcostruzioni.it
     `.trim();
 
-    // TODO: Configure email delivery.
-    // Options for Cloudflare Pages:
-    //
-    // 1. Cloudflare Email Routing + Email Workers
-    //    - Set up in Cloudflare dashboard
-    //    - Use the Email Workers API
-    //
-    // 2. External SMTP via Mailgun/SendGrid/Resend
-    //    - Set API keys as environment variables
-    //    - Uncomment and configure the fetch call below
-    //
-    // 3. Simple webhook to Zapier/Make/n8n
-    //    - Forward form data to automation platform
-    //
-    // Example with Resend:
-    // const res = await fetch('https://api.resend.com/emails', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Authorization': `Bearer ${import.meta.env.RESEND_API_KEY}`,
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     from: 'noreply@dealcostruzioni.it',
-    //     to: 'info@dealcostruzioni.it',
-    //     subject: `[Sito Web] ${oggetto}`,
-    //     text: emailBody,
-    //   }),
-    // });
+    // Send email via Resend
+    const RESEND_API_KEY = import.meta.env.RESEND_API_KEY;
+    const CONTACT_EMAIL = import.meta.env.CONTACT_EMAIL || 'web@dealcostruzioni.it';
 
-    console.log('Contact form submission:', { name, email, oggetto, phone, azienda });
+    if (!RESEND_API_KEY) {
+      console.error('RESEND_API_KEY not configured');
+      return new Response(
+        JSON.stringify({ success: false, message: 'Configurazione email mancante. Contattaci direttamente a info@dealcostruzioni.it' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const resendResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'DEAL Costruzioni Sito Web <onboarding@resend.dev>',
+        to: CONTACT_EMAIL,
+        reply_to: email,
+        subject: `[Sito Web] ${oggetto}`,
+        html: emailHtml,
+        text: emailText,
+      }),
+    });
+
+    if (!resendResponse.ok) {
+      const errorData = await resendResponse.text();
+      console.error('Resend error:', errorData);
+      return new Response(
+        JSON.stringify({ success: false, message: 'Errore nell\'invio del messaggio. Riprova più tardi.' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
 
     return new Response(
       JSON.stringify({
