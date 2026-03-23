@@ -1,6 +1,21 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import ContactForm from '@components/ContactForm.astro';
+
+import project17 from '@assets/images/projects/project-17.jpg';
+import project18 from '@assets/images/projects/project-18.jpg';
+import about6 from '@assets/images/about/about-6.jpg';
+import about7 from '@assets/images/about/about-7.jpg';
+import about8 from '@assets/images/about/about-8.jpg';
+import gallery41 from '@assets/images/gallery/gallery-41.jpg';
+import gallery93 from '@assets/images/gallery/gallery-93.jpg';
+import gallery94 from '@assets/images/gallery/gallery-94.jpg';
+import sottoservizi from '@assets/images/servizi/sottoservizi.jpg';
+import gallery48 from '@assets/images/gallery/gallery-48.jpg';
+import areaNauticaIntro from '@assets/images/projects/area-nautica-costiera/area-nautica-intro.jpg';
+import coperturaIntro from '@assets/images/projects/rifacimento-copertura-storico/copertura-intro.jpg';
+import shape9 from '@assets/images/shape/shape-9.png';
 ---
 
 <BaseLayout
@@ -32,7 +47,7 @@ import ContactForm from '@components/ContactForm.astro';
     <div class="featured-project-3__inner">
       <div class="featured-project-3__left">
         <div class="thumb rr-ov-hidden">
-          <img data-speed="0.5" src="/images/projects/project-17.jpg" alt="Progetto edile DEAL Costruzioni" />
+          <Image src={project17} data-speed="0.5" alt="Progetto edile DEAL Costruzioni" />
         </div>
         <div class="content">
           <a href="/service" class="rr-underline">
@@ -43,7 +58,7 @@ import ContactForm from '@components/ContactForm.astro';
       </div>
       <div class="featured-project-3__right">
         <div class="thumb rr-ov-hidden">
-          <img data-speed="0.5" src="/images/projects/project-18.jpg" alt="Cantiere DEAL Costruzioni" />
+          <Image src={project18} data-speed="0.5" alt="Cantiere DEAL Costruzioni" />
         </div>
         <div class="content">
           <h2 class="title">Realizziamo spazi attraverso un sistema collaudato di costruzione e gestione dei lavori di qualità.</h2>
@@ -79,21 +94,21 @@ import ContactForm from '@components/ContactForm.astro';
           </div>
           <div class="about-us-4__box">
             <div class="media rr-ov-hidden">
-              <img data-speed="0.8" src="/images/about/about-6.jpg" alt="Progetto DEAL Costruzioni" />
+              <Image src={about6} data-speed="0.8" alt="Progetto DEAL Costruzioni" />
             </div>
             <div class="about-us-4__box__wrapper">
               <div class="about-us-4__item">
-                <img src="/images/about/about-7.jpg" alt="Sostenibilità in edilizia" />
+                <Image src={about7} alt="Sostenibilità in edilizia" />
                 <h3 class="title">Sostenibilità.</h3>
                 <p class="desc">Adottiamo soluzioni costruttive a basso impatto ambientale, privilegiando materiali eco-compatibili e tecniche di risparmio energetico.</p>
               </div>
               <div class="about-us-4__item">
-                <img src="/images/about/about-8.jpg" alt="Sicurezza in cantiere" />
+                <Image src={about8} alt="Sicurezza in cantiere" />
                 <h3 class="title">Sicurezza.</h3>
                 <p class="desc">La sicurezza in cantiere è la nostra priorità assoluta. Ogni progetto segue rigorosi protocolli e le normative più aggiornate del settore.</p>
               </div>
               <div class="about-us-4__item">
-                <img src="/images/about/about-7.jpg" alt="Materiali di qualità" />
+                <Image src={about7} alt="Materiali di qualità" />
                 <h3 class="title">Materiali di Qualità.</h3>
                 <p class="desc">Selezioniamo con cura fornitori e materiali certificati per garantire durabilità, prestazioni e un risultato finale di alto livello.</p>
               </div>
@@ -152,7 +167,7 @@ import ContactForm from '@components/ContactForm.astro';
         <div class="service-4__item">
           <div class="media">
             <div class="thumb">
-              <img src="/images/gallery/gallery-41.jpg" alt="Edilizia civile Trieste" />
+              <Image src={gallery41} alt="Edilizia civile Trieste" />
             </div>
             <div class="content">
               <h3 class="title"><a href="/servizi/edilizia-civile">Residenze. Condomini. Abitazioni.</a></h3>
@@ -166,7 +181,7 @@ import ContactForm from '@components/ContactForm.astro';
         <div class="service-4__item">
           <div class="media">
             <div class="thumb">
-              <img src="/images/gallery/gallery-93.jpg" alt="Edilizia industriale Trieste" />
+              <Image src={gallery93} alt="Edilizia industriale Trieste" />
             </div>
             <div class="content">
               <h3 class="title"><a href="/servizi/edilizia-industriale">Capannoni. Stabilimenti. Infrastrutture.</a></h3>
@@ -180,7 +195,7 @@ import ContactForm from '@components/ContactForm.astro';
         <div class="service-4__item">
           <div class="media">
             <div class="thumb">
-              <img src="/images/gallery/gallery-94.jpg" alt="Restauri e conservazioni Trieste" />
+              <Image src={gallery94} alt="Restauri e conservazioni Trieste" />
             </div>
             <div class="content">
               <h3 class="title"><a href="/servizi/restauri-conservazioni">Restauro. Recupero. Valorizzazione.</a></h3>
@@ -194,7 +209,7 @@ import ContactForm from '@components/ContactForm.astro';
         <div class="service-4__item">
           <div class="media">
             <div class="thumb">
-              <img src="/images/servizi/sottoservizi.jpg" alt="Reti e sottoservizi Trieste" />
+              <Image src={sottoservizi} alt="Reti e sottoservizi Trieste" />
             </div>
             <div class="content">
               <h3 class="title"><a href="/servizi/reti-sottoservizi">Acquedotti. Fognature. Reti tecnologiche.</a></h3>
@@ -214,7 +229,7 @@ import ContactForm from '@components/ContactForm.astro';
   <section class="call-to-action">
     <div class="call-to-action__inner rr-ov-hidden">
       <div class="media rr-ov-hidden" data-speed="0.7">
-        <img src="/images/gallery/gallery-48.jpg" alt="Cantiere DEAL Costruzioni" />
+        <Image src={gallery48} alt="Cantiere DEAL Costruzioni" />
       </div>
       <div class="section-title-4__wrapper">
         <h2 class="title rr_title_anim">COSTRUIAMO SPAZI DAL 2007 PER <br />OGNI ESIGENZA</h2>
@@ -238,7 +253,7 @@ import ContactForm from '@components/ContactForm.astro';
             <div class="our-work-7__thumb rr--hover-item rr-pos-rel">
               <a href="/progetti/portfolio-area-nautica-costiera">
                 <div class="rr--hover-img" data-displacement="/images/1.jpg" data-intensity="0.6" data-speedin="1" data-speedout="1">
-                  <img src="/images/projects/area-nautica-costiera/area-nautica-intro.jpg" alt="Riqualificazione area nautica costiera" />
+                  <Image src={areaNauticaIntro} alt="Riqualificazione area nautica costiera" />
                 </div>
               </a>
               <div class="project-hover-bar">
@@ -251,7 +266,7 @@ import ContactForm from '@components/ContactForm.astro';
             <div class="our-work-7__thumb rr--hover-item rr-pos-rel">
               <a href="/progetti/portfolio-rifacimento-copertura">
                 <div class="rr--hover-img" data-displacement="/images/1.jpg" data-intensity="0.6" data-speedin="1" data-speedout="1">
-                  <img src="/images/projects/rifacimento-copertura-storico/copertura-intro.jpg" alt="Rifacimento copertura edificio storico" />
+                  <Image src={coperturaIntro} alt="Rifacimento copertura edificio storico" />
                 </div>
               </a>
               <div class="project-hover-bar">
@@ -285,7 +300,7 @@ import ContactForm from '@components/ContactForm.astro';
   <!-- contact area start -->
   <section class="award-4 section-spacing-top rr-pos-rel" style="z-index: 1; overflow: hidden;">
     <div class="shape" style="position: absolute; bottom: 0; left: 0; z-index: -1;">
-      <img src="/images/shape/shape-9.png" alt="shape decorativo" />
+      <Image src={shape9} alt="shape decorativo" />
     </div>
     <div class="container rr-container-1820">
       <div class="award-4__inner">

@@ -1,5 +1,6 @@
 ---
-// Offcanvas side menu — shared across all pages
+import { Image } from 'astro:assets';
+import logoImg from '@assets/images/logo/logo.jpg';
 ---
 
 <aside class="fix">
@@ -8,7 +9,7 @@
       <div class="offset-widget offset-header">
         <div class="offset-logo">
           <a href="/">
-            <img class="show-light" src="/images/logo/logo.jpg" alt="DEAL Costruzioni Srl" />
+            <Image src={logoImg} class="show-light" alt="DEAL Costruzioni Srl" width={200} />
           </a>
         </div>
         <button id="side-info-close" class="side-info-close">

@@ -1,5 +1,14 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '@layouts/BaseLayout.astro';
+
+import areaNauticaHero from '@assets/images/projects/area-nautica-costiera/area-nautica-hero.jpg';
+import areaNautica01 from '@assets/images/projects/area-nautica-costiera/area-nautica-01.jpg';
+import areaNautica02 from '@assets/images/projects/area-nautica-costiera/area-nautica-02.jpg';
+import areaNautica03 from '@assets/images/projects/area-nautica-costiera/area-nautica-03.jpg';
+import areaNautica04 from '@assets/images/projects/area-nautica-costiera/area-nautica-04.jpg';
+import areaNautica05 from '@assets/images/projects/area-nautica-costiera/area-nautica-05.jpg';
+import areaNautica06 from '@assets/images/projects/area-nautica-costiera/area-nautica-06.jpg';
 ---
 
 <BaseLayout
@@ -28,7 +37,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 
     <!-- parallax-view start  -->
     <div class="parallax-view">
-      <img data-speed="0.2" src="/images/projects/area-nautica-costiera/area-nautica-hero.jpg" alt="Riqualificazione area nautica costiera — vista panoramica del cantiere sul mare" />
+      <Image src={areaNauticaHero} data-speed="0.2" alt="Riqualificazione area nautica costiera — vista panoramica del cantiere sul mare" />
     </div>
     <!-- parallax-view end  -->
 
@@ -43,8 +52,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
           </div>
           <div class="portfolio-details__wrapper">
             <div class="portfolio-details__media rr-ov-hidden">
-              <img data-speed="0.4" src="/images/projects/area-nautica-costiera/area-nautica-05.jpg"
-                alt="Lavori di riqualificazione area nautica costiera" />
+              <Image src={areaNautica05} data-speed="0.4" alt="Lavori di riqualificazione area nautica costiera" />
             </div>
             <div class="portfolio-details__content">
               <div class="portfolio-details__info">
@@ -95,19 +103,19 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 
         <div class="portfolio-gallery__inner">
           <div class="portfolio-gallery__item rr-ov-hidden span-2">
-            <img data-speed="0.6" src="/images/projects/area-nautica-costiera/area-nautica-01.jpg" alt="Lavori strutturali area nautica costiera" />
+            <Image src={areaNautica01} data-speed="0.6" alt="Lavori strutturali area nautica costiera" />
           </div>
           <div class="portfolio-gallery__item rr-ov-hidden">
-            <img data-speed="0.6" src="/images/projects/area-nautica-costiera/area-nautica-02.jpg" alt="Opere di consolidamento costiero" />
+            <Image src={areaNautica02} data-speed="0.6" alt="Opere di consolidamento costiero" />
           </div>
           <div class="portfolio-gallery__item rr-ov-hidden">
-            <img data-speed="0.6" src="/images/projects/area-nautica-costiera/area-nautica-03.jpg" alt="Realizzazione nuovi accessi a mare" />
+            <Image src={areaNautica03} data-speed="0.6" alt="Realizzazione nuovi accessi a mare" />
           </div>
           <div class="portfolio-gallery__item rr-ov-hidden span-2">
-            <img data-speed="0.6" src="/images/projects/area-nautica-costiera/area-nautica-04.jpg" alt="Pavimentazioni area nautica" />
+            <Image src={areaNautica04} data-speed="0.6" alt="Pavimentazioni area nautica" />
           </div>
           <div class="portfolio-gallery__item rr-ov-hidden span-2">
-            <img data-speed="0.6" src="/images/projects/area-nautica-costiera/area-nautica-06.jpg" alt="Vista completamento area nautica costiera" />
+            <Image src={areaNautica06} data-speed="0.6" alt="Vista completamento area nautica costiera" />
           </div>
         </div>
       </div>

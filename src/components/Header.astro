@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import logoImg from '@assets/images/logo/logo.jpg';
+
 interface Props {
   basePath?: string;
 }
@@ -13,7 +16,7 @@ const p = (path: string) => `${basePath}${path}`;
       <div class="header-area-4__inner">
         <div class="header__logo">
           <a href={p('/index.html')}>
-            <img src="/images/logo/logo.jpg" class="normal-logo" alt="DEAL Costruzioni Srl - Impresa Edile Trieste" />
+            <Image src={logoImg} class="normal-logo" alt="DEAL Costruzioni Srl - Impresa Edile Trieste" width={200} />
           </a>
         </div>
         <div class="header__nav-2">

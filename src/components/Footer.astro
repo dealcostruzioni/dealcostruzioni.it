@@ -1,5 +1,6 @@
 ---
-// Site footer — consistent across all pages
+import { Image } from 'astro:assets';
+import logoImg from '@assets/images/logo/logo.jpg';
 ---
 
 <footer class="footer-10 custom-footer-theme">
@@ -9,7 +10,7 @@
         <div class="footer-widget-wrapper">
           <div class="footer-widget-box">
             <div class="footer-logo" style="margin-bottom: 30px;">
-              <img src="/images/logo/logo_transparent.png" alt="DEAL Costruzioni Srl" style="max-width: 200px;" />
+              <Image src={logoImg} alt="DEAL Costruzioni Srl" width={200} />
             </div>
             <div class="copyright-text">
               <p class="text">

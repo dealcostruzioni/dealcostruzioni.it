@@ -1,5 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '@layouts/BaseLayout.astro';
+
+import project23 from '@assets/images/projects/project-23.jpg';
+import project41 from '@assets/images/projects/project-41.jpg';
+import project42 from '@assets/images/projects/project-42.jpg';
+import project43 from '@assets/images/projects/project-43.jpg';
 ---
 
 <BaseLayout
@@ -36,7 +42,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
         <div class="work-6__wrapper">
           <div class="work-6__item">
             <div class="media">
-              <img src="/images/projects/project-23.jpg" alt="image not found" />
+              <Image src={project23} alt="Edilizia civile" />
             </div>
             <div class="content">
               <span class="number">01</span>
@@ -56,7 +62,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
           </div>
           <div class="work-6__item">
             <div class="media">
-              <img src="/images/projects/project-41.jpg" alt="image not found" />
+              <Image src={project41} alt="Edilizia industriale" />
             </div>
             <div class="content">
               <span class="number">02</span>
@@ -77,7 +83,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 
           <div class="work-6__item">
             <div class="media">
-              <img src="/images/projects/project-42.jpg" alt="image not found" />
+              <Image src={project42} alt="Restauro e conservazione" />
             </div>
             <div class="content">
               <span class="number">03</span>
@@ -97,7 +103,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
           </div>
           <div class="work-6__item">
             <div class="media">
-              <img src="/images/projects/project-43.jpg" alt="image not found" />
+              <Image src={project43} alt="Reti e sottoservizi" />
             </div>
             <div class="content">
               <span class="number">04</span>

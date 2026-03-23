@@ -1,5 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '@layouts/BaseLayout.astro';
+
+import service11 from '@assets/images/service/service-11.jpg';
 ---
 
 <BaseLayout
@@ -63,7 +66,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
               </div>
             </div>
             <div class="section-thumb parallax-view">
-              <img src="/images/service/service-11.jpg" alt="image" data-speed="0.8" />
+              <Image src={service11} alt="Restauro e conservazione" data-speed="0.8" />
             </div>
           </div>
         </div>
