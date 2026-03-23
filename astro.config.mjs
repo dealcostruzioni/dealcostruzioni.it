@@ -6,7 +6,9 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://dealcostruzioni.it',
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({
+    imageService: true,
+  }),
   integrations: [
     sitemap({
       filter: (page) =>
