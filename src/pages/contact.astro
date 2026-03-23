@@ -6,6 +6,10 @@ import ContactForm from '@components/ContactForm.astro';
 <BaseLayout
   title="Contatti | DEAL Costruzioni Srl"
   description="Contatta DEAL Costruzioni Srl per un preventivo gratuito. Impresa edile a Trieste: costruzioni, ristrutturazioni e lavori edili in Friuli Venezia Giulia."
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Contatti", url: "/contact" }
+  ]}
 >
 
   <!-- page title area start -->

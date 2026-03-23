@@ -12,6 +12,11 @@ import '@/styles/global.css';
 import '@/assets/css/style.css';
 import '@/assets/css/custom-footer.css';
 
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
 interface Props {
   title: string;
   description: string;
@@ -20,6 +25,8 @@ interface Props {
   canonicalUrl?: string;
   includeHoverEffect?: boolean;
   includeOdometer?: boolean;
+  breadcrumbs?: BreadcrumbItem[];
+  isHomePage?: boolean;
 }
 
 const {
@@ -30,6 +37,8 @@ const {
   canonicalUrl,
   includeHoverEffect = false,
   includeOdometer = false,
+  breadcrumbs,
+  isHomePage = false,
 } = Astro.props;
 ---
 
@@ -42,6 +51,8 @@ const {
     ogImage={ogImage}
     noindex={noindex}
     canonicalUrl={canonicalUrl}
+    breadcrumbs={breadcrumbs}
+    isHomePage={isHomePage}
   />
   <Analytics />
 </head>

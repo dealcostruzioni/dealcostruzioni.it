@@ -5,6 +5,10 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 <BaseLayout
   title="Privacy Policy | DEAL Costruzioni Srl"
   description="Informativa sulla Privacy di DEAL Costruzioni Srl ai sensi del GDPR (Regolamento UE 2016/679) e del D.Lgs. 196/2003."
+  breadcrumbs={[
+    { name: "Home", url: "/" },
+    { name: "Privacy Policy", url: "/privacy-policy" }
+  ]}
 >
   <main>
     <!-- page-title-area start -->
