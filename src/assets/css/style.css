@@ -75,35 +75,41 @@
   font-family: "Tartuffo_Trial-Regular";
   src: url("../fonts/Tartuffo_Trial-RegularItalic.otf");
   font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Tartuffo_Trial-Regular";
   src: url("../fonts/Tartuffo_Trial-Light.otf");
   font-weight: 300;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Tartuffo_Trial-Regular";
   src: url("../fonts/Tartuffo_Trial-Thin.otf");
   font-weight: 100;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Granola";
   src: url("../fonts/Granola.otf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "BDO Grotesk";
   src: url("../fonts/BDOGrotesk-Medium.otf");
   font-weight: 500;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Suisse Int";
   src: url("../fonts/fonnts.com-Suisse_Intl_Book.ttf");
   font-weight: 450;
+  font-display: swap;
 }
 
 :root {
