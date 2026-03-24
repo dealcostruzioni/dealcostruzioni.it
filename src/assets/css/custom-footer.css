@@ -22,6 +22,18 @@
   color: rgba(238, 245, 225, 0.8) !important;
 }
 
+/* Ensure touch targets are at least 48x48px on mobile */
+@media (max-width: 767px) {
+  .custom-footer-theme .footer-nav-list li a,
+  .custom-footer-theme .footer-nav-list li button,
+  .custom-footer-theme .footer-location a {
+    display: inline-block;
+    min-height: 48px;
+    line-height: 48px;
+    padding-inline: 4px;
+  }
+}
+
 .footer-cookie-btn {
   background: none;
   border: none;
