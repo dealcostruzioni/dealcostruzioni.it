@@ -310,10 +310,6 @@
         });
     });
 
-    /* === Nice Select Js (index 11) === */
-    $("select").niceSelect();
-
-
     $('.odometer').waypoint(function (direction) {
         if (direction === 'down') {
             let countNumber = $(this.element).attr("data-count");
@@ -326,31 +322,34 @@
 
 
     /* === masonry (index 07) === */
-    document.addEventListener('DOMContentLoaded', function () {
-        var grid = document.querySelector('.gallery__wrapper');
-        if (!grid) return;
+    if (typeof Isotope !== 'undefined') {
+        document.addEventListener('DOMContentLoaded', function () {
+            var grid = document.querySelector('.gallery__wrapper');
+            if (!grid) return;
 
-        imagesLoaded(grid, function () {
-            var iso = new Isotope(grid, {
-                itemSelector: '.grid-item',
-                layoutMode: 'masonry',
-                masonry: {
-                    gutter: 15,
-                    isFitWidth: true,
-                }
+            imagesLoaded(grid, function () {
+                var iso = new Isotope(grid, {
+                    itemSelector: '.grid-item',
+                    layoutMode: 'masonry',
+                    masonry: {
+                        gutter: 15,
+                        isFitWidth: true,
+                    }
+                });
             });
         });
-    });
-
+    }
 
     /* ===  MagnificPopup image view (index 07) === */
-    $(".popup-image").magnificPopup({
-        type: "image",
-        gallery: {
-            enabled: true,
-            fitWidth: true
-        },
-    });
+    if ('magnificPopup' in jQuery) {
+        $(".popup-image").magnificPopup({
+            type: "image",
+            gallery: {
+                enabled: true,
+                fitWidth: true
+            },
+        });
+    }
 
     // 18. webgl images hover animation //
     if ($('.rr--hover-item').length) {
