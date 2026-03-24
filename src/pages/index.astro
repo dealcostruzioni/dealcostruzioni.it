@@ -47,7 +47,7 @@ import shape9 from '@assets/images/shape/shape-9.png';
     <div class="featured-project-3__inner">
       <div class="featured-project-3__left">
         <div class="thumb rr-ov-hidden">
-          <Image src={project17} data-speed="0.5" alt="Progetto edile DEAL Costruzioni" />
+          <Image src={project17} data-speed="0.5" alt="Progetto edile DEAL Costruzioni" loading="eager" fetchpriority="high" />
         </div>
         <div class="content">
           <a href="/service" class="rr-underline">
@@ -58,7 +58,7 @@ import shape9 from '@assets/images/shape/shape-9.png';
       </div>
       <div class="featured-project-3__right">
         <div class="thumb rr-ov-hidden">
-          <Image src={project18} data-speed="0.5" alt="Cantiere DEAL Costruzioni" />
+          <Image src={project18} data-speed="0.5" alt="Cantiere DEAL Costruzioni" loading="eager" />
         </div>
         <div class="content">
           <h2 class="title">Realizziamo spazi attraverso un sistema collaudato di costruzione e gestione dei lavori di qualità.</h2>
@@ -94,21 +94,21 @@ import shape9 from '@assets/images/shape/shape-9.png';
           </div>
           <div class="about-us-4__box">
             <div class="media rr-ov-hidden">
-              <Image src={about6} data-speed="0.8" alt="Progetto DEAL Costruzioni" />
+              <Image src={about6} data-speed="0.8" alt="Progetto DEAL Costruzioni" loading="lazy" />
             </div>
             <div class="about-us-4__box__wrapper">
               <div class="about-us-4__item">
-                <Image src={about7} alt="Sostenibilità in edilizia" />
+                <Image src={about7} alt="Sostenibilità in edilizia" loading="lazy" />
                 <h3 class="title">Sostenibilità.</h3>
                 <p class="desc">Adottiamo soluzioni costruttive a basso impatto ambientale, privilegiando materiali eco-compatibili e tecniche di risparmio energetico.</p>
               </div>
               <div class="about-us-4__item">
-                <Image src={about8} alt="Sicurezza in cantiere" />
+                <Image src={about8} alt="Sicurezza in cantiere" loading="lazy" />
                 <h3 class="title">Sicurezza.</h3>
                 <p class="desc">La sicurezza in cantiere è la nostra priorità assoluta. Ogni progetto segue rigorosi protocolli e le normative più aggiornate del settore.</p>
               </div>
               <div class="about-us-4__item">
-                <Image src={about7} alt="Materiali di qualità" />
+                <Image src={about7} alt="Materiali di qualità" loading="lazy" />
                 <h3 class="title">Materiali di Qualità.</h3>
                 <p class="desc">Selezioniamo con cura fornitori e materiali certificati per garantire durabilità, prestazioni e un risultato finale di alto livello.</p>
               </div>
@@ -167,11 +167,11 @@ import shape9 from '@assets/images/shape/shape-9.png';
         <div class="service-4__item">
           <div class="media">
             <div class="thumb">
-              <Image src={gallery41} alt="Edilizia civile Trieste" />
+              <Image src={gallery41} alt="Edilizia civile Trieste" loading="lazy" />
             </div>
             <div class="content">
               <h3 class="title"><a href="/servizi/edilizia-civile">Residenze. Condomini. Abitazioni.</a></h3>
-              <a class="arrow" href="/servizi/edilizia-civile"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M1 35L18 18L35 1M35 1H13.3636M35 1V22.6364" stroke="#111111" stroke-width="1.4" /></svg></a>
+              <a class="arrow" href="/servizi/edilizia-civile" aria-label="Scopri edilizia civile"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M1 35L18 18L35 1M35 1H13.3636M35 1V22.6364" stroke="#111111" stroke-width="1.4" /></svg></a>
               <p class="desc">Costruzione e ristrutturazione di edifici residenziali, condomini e abitazioni private con attenzione alla qualità e al comfort abitativo.</p>
             </div>
           </div>
@@ -181,11 +181,11 @@ import shape9 from '@assets/images/shape/shape-9.png';
         <div class="service-4__item">
           <div class="media">
             <div class="thumb">
-              <Image src={gallery93} alt="Edilizia industriale Trieste" />
+              <Image src={gallery93} alt="Edilizia industriale Trieste" loading="lazy" />
             </div>
             <div class="content">
               <h3 class="title"><a href="/servizi/edilizia-industriale">Capannoni. Stabilimenti. Infrastrutture.</a></h3>
-              <a class="arrow" href="/servizi/edilizia-industriale"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M1 35L18 18L35 1M35 1H13.3636M35 1V22.6364" stroke="#111111" stroke-width="1.4" /></svg></a>
+              <a class="arrow" href="/servizi/edilizia-industriale" aria-label="Scopri edilizia industriale"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M1 35L18 18L35 1M35 1H13.3636M35 1V22.6364" stroke="#111111" stroke-width="1.4" /></svg></a>
               <p class="desc">Realizzazione di edifici industriali, capannoni e strutture commerciali progettati per efficienza, sicurezza e funzionalità operativa.</p>
             </div>
           </div>
@@ -195,11 +195,11 @@ import shape9 from '@assets/images/shape/shape-9.png';
         <div class="service-4__item">
           <div class="media">
             <div class="thumb">
-              <Image src={gallery94} alt="Restauri e conservazioni Trieste" />
+              <Image src={gallery94} alt="Restauri e conservazioni Trieste" loading="lazy" />
             </div>
             <div class="content">
               <h3 class="title"><a href="/servizi/restauri-conservazioni">Restauro. Recupero. Valorizzazione.</a></h3>
-              <a class="arrow" href="/servizi/restauri-conservazioni"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M1 35L18 18L35 1M35 1H13.3636M35 1V22.6364" stroke="#111111" stroke-width="1.4" /></svg></a>
+              <a class="arrow" href="/servizi/restauri-conservazioni" aria-label="Scopri restauri e conservazioni"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M1 35L18 18L35 1M35 1H13.3636M35 1V22.6364" stroke="#111111" stroke-width="1.4" /></svg></a>
               <p class="desc">Interventi di restauro e conservazione su edifici storici e di pregio, nel rispetto delle normative e delle tecniche tradizionali.</p>
             </div>
           </div>
@@ -209,11 +209,11 @@ import shape9 from '@assets/images/shape/shape-9.png';
         <div class="service-4__item">
           <div class="media">
             <div class="thumb">
-              <Image src={sottoservizi} alt="Reti e sottoservizi Trieste" />
+              <Image src={sottoservizi} alt="Reti e sottoservizi Trieste" loading="lazy" />
             </div>
             <div class="content">
               <h3 class="title"><a href="/servizi/reti-sottoservizi">Acquedotti. Fognature. Reti tecnologiche.</a></h3>
-              <a class="arrow" href="/servizi/reti-sottoservizi"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M1 35L18 18L35 1M35 1H13.3636M35 1V22.6364" stroke="#111111" stroke-width="1.4" /></svg></a>
+              <a class="arrow" href="/servizi/reti-sottoservizi" aria-label="Scopri reti e sottoservizi"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M1 35L18 18L35 1M35 1H13.3636M35 1V22.6364" stroke="#111111" stroke-width="1.4" /></svg></a>
               <p class="desc">Realizzazione e posa di reti idriche, fognarie, elettriche e di telecomunicazione per infrastrutture urbane e industriali.</p>
             </div>
           </div>
@@ -229,7 +229,7 @@ import shape9 from '@assets/images/shape/shape-9.png';
   <section class="call-to-action">
     <div class="call-to-action__inner rr-ov-hidden">
       <div class="media rr-ov-hidden" data-speed="0.7">
-        <Image src={gallery48} alt="Cantiere DEAL Costruzioni" />
+        <Image src={gallery48} alt="Cantiere DEAL Costruzioni" loading="lazy" />
       </div>
       <div class="section-title-4__wrapper">
         <h2 class="title rr_title_anim">COSTRUIAMO SPAZI DAL 2007 PER <br />OGNI ESIGENZA</h2>
@@ -253,7 +253,7 @@ import shape9 from '@assets/images/shape/shape-9.png';
             <div class="our-work-7__thumb rr--hover-item rr-pos-rel">
               <a href="/progetti/portfolio-area-nautica-costiera">
                 <div class="rr--hover-img" data-displacement="/images/1.jpg" data-intensity="0.6" data-speedin="1" data-speedout="1">
-                  <Image src={areaNauticaIntro} alt="Riqualificazione area nautica costiera" />
+                  <Image src={areaNauticaIntro} alt="Riqualificazione area nautica costiera" loading="lazy" />
                 </div>
               </a>
               <div class="project-hover-bar">
@@ -266,7 +266,7 @@ import shape9 from '@assets/images/shape/shape-9.png';
             <div class="our-work-7__thumb rr--hover-item rr-pos-rel">
               <a href="/progetti/portfolio-rifacimento-copertura">
                 <div class="rr--hover-img" data-displacement="/images/1.jpg" data-intensity="0.6" data-speedin="1" data-speedout="1">
-                  <Image src={coperturaIntro} alt="Rifacimento copertura edificio storico" />
+                  <Image src={coperturaIntro} alt="Rifacimento copertura edificio storico" loading="lazy" />
                 </div>
               </a>
               <div class="project-hover-bar">
@@ -278,8 +278,8 @@ import shape9 from '@assets/images/shape/shape-9.png';
           <div class="our-work-7__item one">
             <div class="section-title-4__wrapper">
               <div class="title-wrap">
-                <h5 class="our-work-7__sub-title">+ I NOSTRI LAVORI</h5>
-                <h6 class="title">Scopri tutti i <span>nostri progetti</span></h6>
+                <p class="our-work-7__sub-title">+ I NOSTRI LAVORI</p>
+                <h3 class="title">Scopri tutti i <span>nostri progetti</span></h3>
               </div>
               <div class="our-work-7__btn">
                 <a href="/case-studies" class="rr-btn-primary btn-black">
@@ -300,7 +300,7 @@ import shape9 from '@assets/images/shape/shape-9.png';
   <!-- contact area start -->
   <section class="award-4 section-spacing-top rr-pos-rel" style="z-index: 1; overflow: hidden;">
     <div class="shape" style="position: absolute; bottom: 0; left: 0; z-index: -1;">
-      <Image src={shape9} alt="shape decorativo" />
+      <Image src={shape9} alt="" loading="lazy" />
     </div>
     <div class="container rr-container-1820">
       <div class="award-4__inner">
