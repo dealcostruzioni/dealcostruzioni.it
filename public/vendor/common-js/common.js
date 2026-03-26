@@ -157,13 +157,19 @@
                 });
             }, 3000);
 
-            $('.odometer').waypoint(function (direction) {
-                if (direction === 'down') {
-                    let countNumber = $(this.element).attr("data-count");
-                    $(this.element).html(countNumber);
+            /* Odometer: use ScrollTrigger (compatible with ScrollSmoother) */
+            document.querySelectorAll('.odometer').forEach(function (el) {
+                if (typeof ScrollTrigger !== 'undefined') {
+                    ScrollTrigger.create({
+                        trigger: el,
+                        start: 'top 80%',
+                        once: true,
+                        onEnter: function () {
+                            var countNumber = el.getAttribute('data-count');
+                            if (countNumber) el.innerHTML = countNumber;
+                        }
+                    });
                 }
-            }, {
-                offset: '80%'
             });
 
         });
@@ -310,13 +316,19 @@
         });
     });
 
-    $('.odometer').waypoint(function (direction) {
-        if (direction === 'down') {
-            let countNumber = $(this.element).attr("data-count");
-            $(this.element).html(countNumber);
+    /* Odometer: use ScrollTrigger instead of Waypoints (compatible with ScrollSmoother) */
+    document.querySelectorAll('.odometer').forEach(function (el) {
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.create({
+                trigger: el,
+                start: 'top 80%',
+                once: true,
+                onEnter: function () {
+                    var countNumber = el.getAttribute('data-count');
+                    if (countNumber) el.innerHTML = countNumber;
+                }
+            });
         }
-    }, {
-        offset: '80%'
     });
     /* ========  main Js ======== */
 
