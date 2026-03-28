@@ -94,9 +94,12 @@ const { formId = 'contact__form' } = Astro.props;
 
       try {
         const formData = new FormData(form);
+        const payload: Record<string, string> = {};
+        formData.forEach((v, k) => { payload[k] = v as string; });
         const res = await fetch('/api/contact', {
           method: 'POST',
-          body: formData,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
         });
         const data = await res.json();
 

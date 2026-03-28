@@ -15,11 +15,20 @@ import type { APIRoute } from 'astro';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const formData = await request.formData();
+    // Support both JSON and FormData submissions
+    const contentType = request.headers.get('content-type') || '';
+    let fields: Record<string, string>;
+
+    if (contentType.includes('application/json')) {
+      fields = await request.json();
+    } else {
+      const formData = await request.formData();
+      fields = {};
+      formData.forEach((v, k) => { fields[k] = v as string; });
+    }
 
     // Honeypot check — if filled, it's a bot
-    const honeypot = formData.get('website');
-    if (honeypot) {
+    if (fields.website) {
       return new Response(
         JSON.stringify({ success: true, message: 'Messaggio inviato con successo.' }),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
@@ -27,12 +36,12 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Extract form fields
-    const name = (formData.get('name') as string)?.trim();
-    const email = (formData.get('email') as string)?.trim();
-    const phone = (formData.get('phone') as string)?.trim() || '';
-    const azienda = (formData.get('azienda') as string)?.trim() || '';
-    const oggetto = (formData.get('oggetto') as string)?.trim();
-    const message = (formData.get('message') as string)?.trim();
+    const name = fields.name?.trim();
+    const email = fields.email?.trim();
+    const phone = fields.phone?.trim() || '';
+    const azienda = fields.azienda?.trim() || '';
+    const oggetto = fields.oggetto?.trim();
+    const message = fields.message?.trim();
 
     // Server-side validation
     const errors: string[] = [];
