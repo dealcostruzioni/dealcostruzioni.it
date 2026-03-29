@@ -147,9 +147,13 @@ Inviato dal modulo di contatto di dealcostruzioni.it
 
     if (!resendResponse.ok) {
       const errorData = await resendResponse.text();
-      console.error('Resend error:', errorData);
+      console.error('Resend error:', resendResponse.status, errorData);
       return new Response(
-        JSON.stringify({ success: false, message: 'Errore nell\'invio del messaggio. Riprova più tardi.' }),
+        JSON.stringify({
+          success: false,
+          message: 'Errore nell\'invio del messaggio. Riprova più tardi.',
+          _resendError: errorData,
+        }),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
     }
