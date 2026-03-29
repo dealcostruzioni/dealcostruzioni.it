@@ -119,7 +119,7 @@ Inviato dal modulo di contatto di dealcostruzioni.it
 
     // Send email via Resend
     const RESEND_API_KEY = import.meta.env.RESEND_API_KEY;
-    const CONTACT_EMAIL = import.meta.env.CONTACT_EMAIL || 'web@dealcostruzioni.it';
+    const CONTACT_EMAIL = import.meta.env.CONTACT_EMAIL || 'gare@dealcostruzioni.it';
 
     if (!RESEND_API_KEY) {
       console.error('RESEND_API_KEY not configured');
@@ -136,7 +136,7 @@ Inviato dal modulo di contatto di dealcostruzioni.it
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'DEAL Costruzioni Sito Web <onboarding@resend.dev>',
+        from: 'DEAL Costruzioni Sito Web <noreply@dealcostruzioni.it>',
         to: CONTACT_EMAIL,
         reply_to: email,
         subject: `[Sito Web] ${oggetto}`,
@@ -152,7 +152,6 @@ Inviato dal modulo di contatto di dealcostruzioni.it
         JSON.stringify({
           success: false,
           message: 'Errore nell\'invio del messaggio. Riprova più tardi.',
-          _resendError: errorData,
         }),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
